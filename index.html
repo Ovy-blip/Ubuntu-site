@@ -14,7 +14,6 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Jost:wght@300;400;500;600;700&family=DM+Mono:wght@400;500&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 <style>
 :root{
   --black:#000000;--bg:#050401;--bg2:#0A0800;
@@ -75,6 +74,82 @@ nav.nav-links{display:flex;align-items:center;gap:0.1rem;flex:1;}
 /* main */
 main{position:relative;z-index:1;max-width:1280px;margin:0 auto;padding:0 2.5rem 6rem;}
 
+/* globe hero */
+.globe-hero-wrap{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:0;
+  min-height:100vh;
+  padding-top:5.5rem;
+  align-items:center;
+}
+@media(max-width:900px){
+  .globe-hero-wrap{grid-template-columns:1fr;min-height:auto;padding-top:5rem;}
+}
+.globe-canvas-wrap{
+  position:relative;
+  height:620px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+@media(max-width:900px){.globe-canvas-wrap{height:360px;order:2;}}
+#ubl-globe{
+  width:100%;
+  height:100%;
+  display:block;
+  cursor:grab;
+}
+#ubl-globe:active{cursor:grabbing;}
+.globe-label-badge{
+  position:absolute;
+  bottom:1.5rem;
+  left:50%;
+  transform:translateX(-50%);
+  display:inline-flex;
+  align-items:center;
+  gap:0.5rem;
+  font-family:var(--font-mono);
+  font-size:0.62rem;
+  color:rgba(200,150,10,0.6);
+  letter-spacing:0.1em;
+  text-transform:uppercase;
+  white-space:nowrap;
+}
+.hero-text-wrap{
+  padding:2rem 0 2rem 3rem;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+}
+@media(max-width:900px){
+  .hero-text-wrap{padding:2.5rem 0 0;order:1;}
+}
+.hero-mini-stats{
+  display:flex;
+  gap:2rem;
+  margin-top:2.5rem;
+  padding-top:2rem;
+  border-top:1px solid var(--border);
+}
+.hms{}
+.hms-val{
+  font-family:var(--font-display);
+  font-size:1.6rem;
+  font-weight:700;
+  color:var(--gold2);
+  display:block;
+  line-height:1;
+}
+.hms-lbl{
+  font-family:var(--font-body);
+  font-size:0.72rem;
+  color:var(--muted);
+  margin-top:0.3rem;
+  display:block;
+  letter-spacing:0.04em;
+}
+
 /* hero */
 .hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding-top:7rem;padding-bottom:3rem;position:relative;}
 .hero-badge{display:inline-flex;align-items:center;gap:0.55rem;font-family:var(--font-mono);font-size:0.68rem;color:var(--gold3);letter-spacing:0.12em;text-transform:uppercase;border:1px solid rgba(200,150,10,0.22);padding:0.38rem 1rem;border-radius:100px;margin-bottom:2.2rem;width:fit-content;background:rgba(200,150,10,0.04);}
@@ -132,7 +207,9 @@ h2.sh em{font-style:normal;color:var(--gold2);}
 .africa-map{width:100%;max-width:420px;height:auto;display:block;margin:0 auto;}
 .continent{fill:rgba(200,150,10,0.03);stroke:rgba(200,150,10,0.22);stroke-width:1.2;}
 .country{fill:rgba(200,150,10,0.05);stroke:rgba(200,150,10,0.18);stroke-width:0.8;transition:all 0.3s;}
-.country-ghana{fill:url(#gGhana);stroke:var(--gold2);stroke-width:1.8;}
+.country-ghana{fill:url(#gGhana);stroke:var(--gold2);stroke-width:1.8;animation:ghPulse 3s ease-in-out infinite;}
+@keyframes ghPulse{0%,100%{stroke-opacity:1;fill-opacity:0.9}50%{stroke-opacity:0.5;fill-opacity:0.5}}
+@keyframes ringPulse{0%{r:12;opacity:0.5}100%{r:26;opacity:0}}
 .country-nigeria{fill:rgba(200,150,10,0.14);stroke:rgba(200,150,10,0.25);stroke-width:0.8;}
 .country-ecowas{fill:rgba(200,150,10,0.09);stroke:rgba(200,150,10,0.2);}
 .country-east,.country-south,.country-north{fill:rgba(200,150,10,0.07);stroke:rgba(200,150,10,0.15);}
@@ -152,7 +229,7 @@ h2.sh em{font-style:normal;color:var(--gold2);}
 /* globe */
 .globe-section{padding:6rem 0;border-top:1px solid var(--border);}
 .globe-wrap{position:relative;height:540px;overflow:hidden;border-radius:20px;border:1px solid var(--border);background:radial-gradient(ellipse at center,rgba(200,150,10,0.02) 0%,transparent 70%);}
-#globe-canvas{position:absolute;top:0;left:0;width:100%;height:100%;z-index:0;}
+/* globe canvas handled by #ubl-globe */
 .orbit-labels{position:absolute;top:0;left:0;width:100%;height:100%;z-index:2;pointer-events:none;}
 .orbit-label{position:absolute;padding:.32rem .75rem;border-radius:6px;font-family:var(--font-mono);font-size:0.65rem;font-weight:600;letter-spacing:.05em;white-space:nowrap;border:1px solid;pointer-events:auto;cursor:default;transition:opacity .3s,transform .3s;}
 .orbit-label:hover{opacity:1!important;transform:scale(1.18)!important;z-index:10;}
@@ -303,15 +380,31 @@ a.fci:hover{color:var(--gold2);}
   </div>
 </div>
 <main>
-<div class="hero fade-up d1">
-  <div class="hero-badge"><span class="badge-dot"></span>Live in Ghana · ECOWAS Ready · Bank of Ghana Aligned</div>
-  <h1 class="hero-title">Banking trust for<br/><em>600 million</em><br/>invisible people.</h1>
-  <p class="hero-desc">UBL is the behavioural intelligence and identity infrastructure that sits between Africa's informal economy and the formal financial system — making the invisible permanently visible, scorable and bankable.</p>
-  <div class="hero-btns">
-    <button class="btn-gold" onclick="openWhatsApp()">Request API Access</button>
-    <a href="how-it-works.html" class="btn-ghost">How It Works →</a>
+<div class="globe-hero-wrap">
+  <!-- Globe canvas - full left side -->
+  <div class="globe-canvas-wrap">
+    <canvas id="ubl-globe"></canvas>
+    <div class="globe-label-badge">
+      <span class="badge-dot"></span>
+      Agentics National Systems Suite
+    </div>
   </div>
-</div>
+  <!-- Hero text - right side -->
+  <div class="hero-text-wrap fade-up d1">
+    <div class="hero-badge"><span class="badge-dot"></span>Live in Ghana · ECOWAS Ready · Bank of Ghana Aligned</div>
+    <h1 class="hero-title">Banking trust for<br/><em>600 million</em><br/>invisible people.</h1>
+    <p class="hero-desc">UBL is the behavioural intelligence and identity infrastructure that sits between Africa's informal economy and the formal financial system — making the invisible permanently visible, scorable and bankable.</p>
+    <div class="hero-btns">
+      <button class="btn-gold" onclick="openWhatsApp()">Request API Access</button>
+      <a href="how-it-works.html" class="btn-ghost">How It Works →</a>
+    </div>
+    <div class="hero-mini-stats">
+      <div class="hms"><span class="hms-val">600M+</span><span class="hms-lbl">Unbanked adults</span></div>
+      <div class="hms"><span class="hms-val">$3T</span><span class="hms-lbl">Informal economy</span></div>
+      <div class="hms"><span class="hms-val">54</span><span class="hms-lbl">African countries</span></div>
+    </div>
+  </div>
+</div></div>
 
 <div class="stats-bar">
   <div class="stat-item fade-up d1"><div class="stat-num">600M+</div><div class="stat-lbl">Adults financially<br/>excluded in Africa</div></div>
@@ -333,116 +426,6 @@ a.fci:hover{color:var(--gold2);}
   </div>
 </div>
 
-<div class="map-section">
-  <div>
-    <svg viewBox="0 0 500 600" xmlns="http://www.w3.org/2000/svg" class="africa-map" aria-label="Africa map showing UBL deployment">
-  <defs>
-    <radialGradient id="gGhana" cx="50%" cy="50%" r="50%">
-      <stop offset="0%" style="stop-color:#F0B429;stop-opacity:0.95"/>
-      <stop offset="100%" style="stop-color:#C8960A;stop-opacity:0.5"/>
-    </radialGradient>
-    <filter id="glow" x="-30%" y="-30%" width="160%" height="160%">
-      <feGaussianBlur stdDeviation="4" result="coloredBlur"/>
-      <feMerge><feMergeNode in="coloredBlur"/><feMergeNode in="SourceGraphic"/></feMerge>
-    </filter>
-    <filter id="softglow" x="-20%" y="-20%" width="140%" height="140%">
-      <feGaussianBlur stdDeviation="2" result="blur"/>
-      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
-    </filter>
-  </defs>
-
-  <!-- Africa continent -->
-  <path class="continent" d="M200,22 L235,18 L268,26 L295,40 L318,52 L342,60 L365,65 L382,76 L392,94 L395,114 L390,135 L384,155 L380,170 L390,188 L400,208 L403,228 L400,248 L390,268 L376,288 L360,308 L342,330 L326,352 L314,374 L302,396 L288,420 L272,444 L254,466 L236,484 L218,498 L204,508 L196,500 L186,482 L178,462 L170,440 L164,418 L156,396 L148,372 L142,350 L136,328 L132,306 L128,284 L124,262 L120,240 L118,218 L116,196 L116,174 L118,152 L122,130 L128,110 L138,92 L152,76 L168,62 L182,48 L192,34 Z"/>
-
-  <!-- ECOWAS region highlight -->
-  <path class="region-ecowas" d="M118,218 L145,210 L168,205 L192,202 L215,206 L232,215 L240,230 L238,248 L225,262 L205,268 L183,265 L162,260 L142,252 L128,240 L118,226 Z" opacity="0.4"/>
-
-  <!-- Individual countries -->
-  <!-- Ghana - PRIMARY DEPLOYMENT -->
-  <path class="country country-ghana" filter="url(#glow)" d="M176,272 L194,265 L210,263 L224,268 L230,280 L226,296 L216,308 L202,313 L186,308 L174,296 L170,282 Z"/>
-  <!-- Nigeria -->
-  <path class="country country-nigeria" d="M218,256 L242,248 L260,250 L274,260 L278,274 L270,288 L252,294 L232,290 L218,278 L213,265 Z"/>
-  <!-- Côte d'Ivoire -->
-  <path class="country country-ecowas" d="M148,276 L168,270 L180,276 L176,292 L160,298 L146,290 Z"/>
-  <!-- Senegal -->
-  <path class="country country-ecowas" d="M118,215 L138,210 L150,216 L146,228 L130,232 L116,224 Z"/>
-  <!-- Mali -->
-  <path class="country country-ecowas" d="M140,190 L168,184 L195,182 L205,192 L198,208 L170,212 L144,206 Z"/>
-  <!-- Togo/Benin -->
-  <path class="country country-ecowas" d="M212,266 L220,262 L226,268 L224,280 L216,282 L210,276 Z"/>
-  <!-- Kenya -->
-  <path class="country country-east" d="M322,298 L342,292 L354,302 L348,318 L332,324 L318,314 Z"/>
-  <!-- Tanzania -->
-  <path class="country country-east" d="M306,318 L328,312 L340,322 L334,340 L314,346 L300,334 Z"/>
-  <!-- South Africa -->
-  <path class="country country-south" d="M190,458 L220,450 L244,454 L252,470 L240,484 L214,488 L192,478 L182,465 Z"/>
-  <!-- Egypt -->
-  <path class="country country-north" d="M232,58 L262,54 L280,64 L276,84 L254,90 L228,84 L222,70 Z"/>
-  <!-- Ethiopia -->
-  <path class="country country-east" d="M326,258 L352,252 L366,262 L360,280 L340,286 L322,276 Z"/>
-  <!-- Angola -->
-  <path class="country country-south" d="M210,358 L238,350 L254,358 L250,378 L226,384 L206,374 Z"/>
-
-  <!-- Connection lines from Ghana -->
-  <line class="conn-line" x1="200" y1="288" x2="245" y2="270"/>
-  <line class="conn-line" x1="190" y1="280" x2="135" y2="222"/>
-  <line class="conn-line" x1="192" y1="282" x2="162" y2="284"/>
-  <line class="conn-line" x1="200" y1="288" x2="174" y2="290"/>
-  <line class="conn-line" x1="200" y1="290" x2="338" y2="308" stroke-dasharray="6 6"/>
-  <line class="conn-line" x1="196" y1="295" x2="218" y2="466" stroke-dasharray="8 8" opacity="0.3"/>
-  <line class="conn-line" x1="200" y1="270" x2="248" y2="72" stroke-dasharray="6 8" opacity="0.25"/>
-  <line class="conn-line" x1="200" y1="288" x2="340" y2="268" stroke-dasharray="5 7" opacity="0.2"/>
-
-  <!-- Ghana beacon -->
-  <circle cx="196" cy="288" r="18" fill="var(--gold2)" opacity="0.08">
-    <animate attributeName="r" values="14;28;14" dur="3s" repeatCount="indefinite"/>
-    <animate attributeName="opacity" values="0.12;0.02;0.12" dur="3s" repeatCount="indefinite"/>
-  </circle>
-  <circle cx="196" cy="288" r="10" fill="var(--gold2)" opacity="0.15">
-    <animate attributeName="r" values="8;16;8" dur="3s" begin="0.5s" repeatCount="indefinite"/>
-    <animate attributeName="opacity" values="0.2;0.05;0.2" dur="3s" begin="0.5s" repeatCount="indefinite"/>
-  </circle>
-
-  <!-- City dots -->
-  <circle class="city-dot city-ghana" cx="196" cy="288" r="6" filter="url(#glow)"/>
-  <circle class="city-dot city-nigeria" cx="245" cy="270" r="4"/>
-  <circle class="city-dot city-east" cx="336" cy="310" r="4"/>
-  <circle class="city-dot city-south" cx="218" cy="468" r="4"/>
-  <circle class="city-dot city-north" cx="250" cy="72" r="4"/>
-  <circle class="city-dot" cx="135" cy="222" r="3" fill="rgba(200,150,10,0.6)"/>
-  <circle class="city-dot" cx="162" cy="284" r="3" fill="rgba(200,150,10,0.6)"/>
-  <circle class="city-dot" cx="340" cy="268" r="3.5" fill="rgba(200,150,10,0.5)"/>
-
-  <!-- Labels -->
-  <text class="city-label label-ghana" x="204" y="284">Accra ✦</text>
-  <text class="city-label" x="250" y="258" style="fill:rgba(255,255,255,0.45);font-size:9px;">Lagos</text>
-  <text class="city-label" x="340" y="300" style="fill:rgba(255,255,255,0.35);font-size:8px;">Nairobi</text>
-  <text class="city-label" x="185" y="445" style="fill:rgba(255,255,255,0.3);font-size:8px;">Cape Town</text>
-  <text class="city-label" x="350" y="258" style="fill:rgba(255,255,255,0.35);font-size:8px;">Addis Ababa</text>
-
-  <!-- Region labels -->
-  <text class="region-label" x="172" y="348">ECOWAS</text>
-  <text class="region-label" x="318" y="265" style="font-size:7.5px;opacity:0.5">East Africa</text>
-  <text class="region-label" x="200" y="440" style="font-size:7.5px;opacity:0.4">Southern Africa</text>
-</svg>
-    <div id="map-tip" style="display:none;font-family:var(--font-mono);font-size:0.7rem;color:var(--gold2);padding:0.4rem 0.8rem;background:rgba(200,150,10,0.08);border:1px solid var(--border);border-radius:6px;margin-top:1rem;"></div>
-    <div class="map-legend" style="margin-top:1.5rem;">
-      <div class="legend-item"><div class="legend-dot" style="background:var(--gold2);box-shadow:0 0 8px rgba(200,150,10,0.5);"></div>Ghana — Live Deployment (Phase 1)</div>
-      <div class="legend-item"><div class="legend-dot" style="background:rgba(200,150,10,0.5);"></div>ECOWAS — Phase 2 (2026–2027)</div>
-      <div class="legend-item"><div class="legend-dot" style="background:rgba(200,150,10,0.3);"></div>East & Southern Africa — Phase 3–4</div>
-    </div>
-  </div>
-  <div class="fade-up">
-    <span class="eyebrow">Continental Expansion</span>
-    <h2 class="sh">Ghana First.<br/><em>Africa Next.</em></h2>
-    <p class="sp">UBL is designed from day one to work across Africa's 54 countries. Ghana is the production deployment. ECOWAS expansion follows in 2026–2027. Every new country added is a new node in a continental trust network.</p>
-    <div class="g2" style="margin-top:2rem;gap:1rem;">
-      <div class="scard"><div class="scard-val">15</div><div class="scard-lbl">ECOWAS member states — Phase 2 target</div></div>
-      <div class="scard"><div class="scard-val">54</div><div class="scard-lbl">African countries — continental architecture</div></div>
-      <div class="scard"><div class="scard-val">$680B</div><div class="scard-lbl">Total addressable market</div></div>
-      <div class="scard"><div class="scard-val">2027</div><div class="scard-lbl">ECOWAS Trust ID launch target</div></div>
-    </div>
-  </div>
 </div>
 
 <div class="section">
@@ -467,30 +450,6 @@ a.fci:hover{color:var(--gold2);}
   </div>
 </div>
 
-<div class="globe-section">
-  <span class="eyebrow">Systems Architecture</span>
-  <h2 class="sh" style="margin-bottom:0.5rem;">National systems<br/>orbiting <em>one trust core</em></h2>
-  <p class="sp">UBL is the financial trust layer in a suite of national digital infrastructure systems designed and operated by Agentics Technology Solutions. Each system reinforces the other.</p>
-  <div class="globe-wrap">
-    <canvas id="globe-canvas"></canvas>
-    <div class="orbit-labels" id="orbitLabels">
-      <span class="orbit-label ol-blue" data-angle="0" data-speed="0.3" data-radius="0.35">UBL</span>
-      <span class="orbit-label ol-green" data-angle="51" data-speed="0.28" data-radius="0.38">AYL</span>
-      <span class="orbit-label ol-amber" data-angle="102" data-speed="0.25" data-radius="0.33">NFEIS</span>
-      <span class="orbit-label ol-purple" data-angle="153" data-speed="0.32" data-radius="0.36">GIGGS</span>
-      <span class="orbit-label ol-teal" data-angle="204" data-speed="0.27" data-radius="0.34">LAND</span>
-      <span class="orbit-label ol-rose" data-angle="255" data-speed="0.3" data-radius="0.37">AKOMA-NIS</span>
-      <span class="orbit-label ol-blue" data-angle="306" data-speed="0.26" data-radius="0.32">NEIS-24</span>
-      <span class="orbit-label ol-amber" data-angle="25" data-speed="0.29" data-radius="0.4">FINANCE</span>
-      <span class="orbit-label ol-green" data-angle="76" data-speed="0.24" data-radius="0.35">SOCIAL</span>
-      <span class="orbit-label ol-rose" data-angle="127" data-speed="0.31" data-radius="0.33">BORDER</span>
-      <span class="orbit-label ol-purple" data-angle="178" data-speed="0.28" data-radius="0.38">AGRIC</span>
-      <span class="orbit-label ol-teal" data-angle="229" data-speed="0.26" data-radius="0.36">ENERGY</span>
-    </div>
-    <div class="globe-overlay">
-      <p style="font-family:var(--font-mono);font-size:0.7rem;color:rgba(200,150,10,0.6);letter-spacing:0.1em;">AGENTICS NATIONAL SYSTEMS SUITE</p>
-    </div>
-  </div>
 </div>
 
 <div class="cta-band fade-up">
@@ -585,10 +544,411 @@ document.addEventListener('DOMContentLoaded',function(){
   });
 });
 </script>
+
 <script>
-(function(){var c=document.getElementById('globe-canvas'),s=new THREE.Scene(),cam=new THREE.PerspectiveCamera(45,c.clientWidth/c.clientHeight,.1,1e3);cam.position.z=3.2;var r=new THREE.WebGLRenderer({canvas:c,alpha:!0,antialias:!0});r.setSize(c.clientWidth,c.clientHeight);r.setPixelRatio(Math.min(window.devicePixelRatio,2));var g=new THREE.Mesh(new THREE.SphereGeometry(1,40,40),new THREE.MeshBasicMaterial({color:0x3b82f6,wireframe:!0,transparent:!0,opacity:.08}));s.add(g);s.add(new THREE.Mesh(new THREE.SphereGeometry(.98,32,32),new THREE.MeshBasicMaterial({color:0x1e3a5f,transparent:!0,opacity:.04})));var rc=[0x3b82f6,0x22c55e,0xa78bfa];for(var i=0;i<3;i++){var rg=new THREE.Mesh(new THREE.RingGeometry(1.02+i*.06,1.025+i*.06,80),new THREE.MeshBasicMaterial({color:rc[i],transparent:!0,opacity:.12,side:THREE.DoubleSide}));rg.rotation.x=Math.PI/2+(i-1)*.4;rg.rotation.y=i*.3;s.add(rg)}var dc=120,dg=new THREE.BufferGeometry(),pos=new Float32Array(dc*3);for(var i=0;i<dc;i++){var ph=Math.acos(2*Math.random()-1),th=2*Math.PI*Math.random();pos[i*3]=1.01*Math.sin(ph)*Math.cos(th);pos[i*3+1]=1.01*Math.sin(ph)*Math.sin(th);pos[i*3+2]=1.01*Math.cos(ph)}dg.setAttribute('position',new THREE.BufferAttribute(pos,3));s.add(new THREE.Points(dg,new THREE.PointsMaterial({color:0x60a5fa,size:.02,transparent:!0,opacity:.6})));for(var i=0;i<20;i++){var a=Math.floor(Math.random()*dc)*3,b=Math.floor(Math.random()*dc)*3;s.add(new THREE.Line(new THREE.BufferGeometry().setFromPoints([new THREE.Vector3(pos[a],pos[a+1],pos[a+2]),new THREE.Vector3(pos[b],pos[b+1],pos[b+2])]),new THREE.LineBasicMaterial({color:0x3b82f6,transparent:!0,opacity:.06})))}function anim(){requestAnimationFrame(anim);g.rotation.y+=.002;g.rotation.x+=.0005;s.children.forEach(function(ch,i){if(ch.geometry&&ch.geometry.type==='RingGeometry')ch.rotation.z+=.001*(i+1)});r.render(s,cam)}anim();window.addEventListener('resize',function(){cam.aspect=c.clientWidth/c.clientHeight;cam.updateProjectionMatrix();r.setSize(c.clientWidth,c.clientHeight)})})();
-(function(){var ct=document.getElementById('orbitLabels'),ls=ct.querySelectorAll('.orbit-label'),t=0;function a(){t+=.01;var cw=ct.clientWidth,ch=ct.clientHeight,cx=cw/2,cy=ch/2;ls.forEach(function(l){var ba=parseFloat(l.dataset.angle)*Math.PI/180,sp=parseFloat(l.dataset.speed),rf=parseFloat(l.dataset.radius),ang=ba+t*sp,rx=cw*rf,ry=ch*rf*.6,x=cx+Math.cos(ang)*rx-l.offsetWidth/2,y=cy+Math.sin(ang)*ry-l.offsetHeight/2,d=Math.sin(ang);l.style.left=x+'px';l.style.top=y+'px';l.style.opacity=.3+(d+1)*.35;l.style.zIndex=d>0?3:1;l.style.transform='scale('+(0.8+(d+1)*.15)+')'});requestAnimationFrame(a)}a()})();
-var obs=new IntersectionObserver(function(e){e.forEach(function(en){if(en.isIntersecting)en.target.classList.add('visible')})},{threshold:.1});document.querySelectorAll('.fade-up').forEach(function(el){obs.observe(el)});
+// WebGL detection for globe fallback
+(function(){
+  try {
+    var c = document.createElement('canvas');
+    var gl = c.getContext('webgl') || c.getContext('experimental-webgl');
+    if(!gl) throw new Error('no webgl');
+  } catch(e) {
+    var fb = document.getElementById('globe-fallback');
+    if(fb) fb.style.display = 'block';
+  }
+})();
+</script>
+<script>
+// ═══════════════════════════════════════════════════════════════════════
+// UBL LIVE GLOBE — Pure Canvas, Zero Dependencies
+// ═══════════════════════════════════════════════════════════════════════
+
+(function() {
+  var canvas = document.getElementById('ubl-globe');
+  if (!canvas) return;
+  var ctx = canvas.getContext('2d');
+
+  // ── Sizing ──────────────────────────────────────────────────────────
+  function resize() {
+    var parent = canvas.parentElement;
+    canvas.width  = parent.clientWidth;
+    canvas.height = parent.clientHeight;
+  }
+  resize();
+  window.addEventListener('resize', function() { resize(); });
+
+  // ── Palette ─────────────────────────────────────────────────────────
+  var GOLD   = '#C8960A';
+  var GOLD2  = '#F0B429';
+  var GOLD3  = '#FFD46B';
+  var WHITE  = 'rgba(245,240,230,';
+  var DIM    = 'rgba(200,150,10,';
+
+  // ── Globe state ──────────────────────────────────────────────────────
+  var rotY   = 0;      // current Y rotation (longitude)
+  var rotX   = 0.18;   // tilt
+  var autoSpeed = 0.003;
+  var dragging  = false;
+  var lastX = 0, lastY = 0;
+  var velX  = 0.003;
+
+  // ── Cities (lat, lng, label, size) ──────────────────────────────────
+  var CITIES = [
+    // Africa - core
+    { lat:  5.6,  lng: -0.2,  label: 'Accra',       r: 6,   col: GOLD2,  glow: true  },
+    { lat:  6.5,  lng:  3.4,  label: 'Lagos',        r: 5,   col: GOLD,   glow: false },
+    { lat: -1.3,  lng: 36.8,  label: 'Nairobi',      r: 4.5, col: GOLD,   glow: false },
+    { lat: 30.1,  lng: 31.2,  label: 'Cairo',        r: 4.5, col: GOLD,   glow: false },
+    { lat: -26.2, lng: 28.0,  label: 'Johannesburg', r: 4,   col: GOLD,   glow: false },
+    { lat: 14.7,  lng: -17.5, label: 'Dakar',        r: 4,   col: GOLD,   glow: false },
+    { lat:  9.0,  lng: 38.7,  label: 'Addis Ababa',  r: 4,   col: GOLD,   glow: false },
+    { lat:  4.4,  lng:  9.7,  label: 'Douala',       r: 3.5, col: GOLD,   glow: false },
+    { lat: -4.3,  lng: 15.3,  label: 'Kinshasa',     r: 3.5, col: GOLD,   glow: false },
+    { lat: 33.9,  lng: -6.9,  label: 'Rabat',        r: 3.5, col: GOLD,   glow: false },
+    { lat: -33.9, lng: 18.4,  label: 'Cape Town',    r: 4,   col: GOLD,   glow: false },
+    { lat: 12.4,  lng: -1.5,  label: 'Ouagadougou',  r: 3,   col: GOLD,   glow: false },
+    // Agentics systems orbiting
+    { lat: 22,    lng:-30,    label: 'UBL',           r: 0,   col: GOLD3,  tag: true, tagCol:'rgba(200,150,10,0.15)', speed: 0.8  },
+    { lat: 38,    lng: 60,    label: 'AYL',           r: 0,   col: GOLD2,  tag: true, tagCol:'rgba(34,197,94,0.12)',  speed: 0.65 },
+    { lat:-18,    lng: 90,    label: 'NFEIS',         r: 0,   col: GOLD,   tag: true, tagCol:'rgba(245,158,11,0.12)', speed: 0.75 },
+    { lat: 45,    lng:-120,   label: 'AKOMA-NIS',     r: 0,   col: GOLD3,  tag: true, tagCol:'rgba(244,63,94,0.12)',  speed: 0.55 },
+    { lat:-35,    lng:-60,    label: 'GIGGS',         r: 0,   col: GOLD2,  tag: true, tagCol:'rgba(167,139,250,0.12)',speed: 0.7  },
+    { lat: 10,    lng: 150,   label: 'NEIS-24',       r: 0,   col: GOLD,   tag: true, tagCol:'rgba(45,212,191,0.12)', speed: 0.6  },
+  ];
+
+  // ── Connections between African cities ───────────────────────────────
+  var ARCS = [
+    [0,1],[0,2],[0,3],[0,5],[0,6],[0,9],
+    [1,2],[1,5],[2,6],[3,9],[4,2],[4,6]
+  ];
+
+  // ── 3D projection ────────────────────────────────────────────────────
+  function latLngTo3D(lat, lng) {
+    var phi   = (90 - lat)  * Math.PI / 180;
+    var theta = (lng + 180) * Math.PI / 180;
+    return {
+      x: -Math.sin(phi) * Math.cos(theta),
+      y:  Math.cos(phi),
+      z:  Math.sin(phi) * Math.sin(theta)
+    };
+  }
+
+  function rotate3D(p, ry, rx) {
+    // Rotate around Y axis
+    var x1 =  p.x * Math.cos(ry) + p.z * Math.sin(ry);
+    var z1 = -p.x * Math.sin(ry) + p.z * Math.cos(ry);
+    var y1 =  p.y;
+    // Rotate around X axis
+    var y2 =  y1 * Math.cos(rx) - z1 * Math.sin(rx);
+    var z2 =  y1 * Math.sin(rx) + z1 * Math.cos(rx);
+    return { x: x1, y: y2, z: z2 };
+  }
+
+  function project(p3d, R, cx, cy) {
+    var scale = 1 / (1 + p3d.z * 0.3);  // perspective
+    return {
+      sx: cx + p3d.x * R * scale,
+      sy: cy - p3d.y * R * scale,
+      z:  p3d.z,
+      sc: scale
+    };
+  }
+
+  // ── Draw grid ────────────────────────────────────────────────────────
+  function drawGrid(cx, cy, R) {
+    // Latitude lines
+    for (var lat = -75; lat <= 75; lat += 15) {
+      ctx.beginPath();
+      var first = true;
+      for (var lng2 = -180; lng2 <= 180; lng2 += 3) {
+        var p3 = latLngTo3D(lat, lng2);
+        var r  = rotate3D(p3, rotY, rotX);
+        if (r.z < -0.1) { first = true; continue; }
+        var pr = project(r, R, cx, cy);
+        if (first) { ctx.moveTo(pr.sx, pr.sy); first = false; }
+        else ctx.lineTo(pr.sx, pr.sy);
+      }
+      var alpha = 0.04 + (lat === 0 ? 0.04 : 0);
+      ctx.strokeStyle = 'rgba(200,150,10,' + alpha + ')';
+      ctx.lineWidth = lat === 0 ? 0.8 : 0.4;
+      ctx.stroke();
+    }
+    // Longitude lines
+    for (var lng3 = -180; lng3 < 180; lng3 += 15) {
+      ctx.beginPath();
+      var first2 = true;
+      for (var lat2 = -90; lat2 <= 90; lat2 += 3) {
+        var p3b = latLngTo3D(lat2, lng3);
+        var rb  = rotate3D(p3b, rotY, rotX);
+        if (rb.z < -0.1) { first2 = true; continue; }
+        var prb = project(rb, R, cx, cy);
+        if (first2) { ctx.moveTo(prb.sx, prb.sy); first2 = false; }
+        else ctx.lineTo(prb.sx, prb.sy);
+      }
+      ctx.strokeStyle = 'rgba(200,150,10,0.04)';
+      ctx.lineWidth = 0.4;
+      ctx.stroke();
+    }
+  }
+
+  // ── Draw arc between two cities ──────────────────────────────────────
+  function drawArc(c1, c2, R, cx, cy, alpha) {
+    var steps = 40;
+    var p1 = latLngTo3D(c1.lat, c1.lng);
+    var p2 = latLngTo3D(c2.lat, c2.lng);
+
+    ctx.beginPath();
+    var first3 = true;
+    var allHidden = true;
+
+    for (var i = 0; i <= steps; i++) {
+      var t = i / steps;
+      // Slerp between p1 and p2 with arc height
+      var mx = p1.x + (p2.x - p1.x) * t;
+      var my = p1.y + (p2.y - p1.y) * t;
+      var mz = p1.z + (p2.z - p1.z) * t;
+      var len = Math.sqrt(mx*mx + my*my + mz*mz);
+      var arc = 1.08 - 0.08 * Math.abs(t - 0.5) * 2; // slight lift at midpoint
+      mx = (mx/len) * arc;
+      my = (my/len) * arc;
+      mz = (mz/len) * arc;
+
+      var r3 = rotate3D({x:mx,y:my,z:mz}, rotY, rotX);
+      if (r3.z < -0.05) { first3 = true; continue; }
+      allHidden = false;
+      var pr3 = project(r3, R, cx, cy);
+      if (first3) { ctx.moveTo(pr3.sx, pr3.sy); first3 = false; }
+      else ctx.lineTo(pr3.sx, pr3.sy);
+    }
+
+    if (!allHidden) {
+      ctx.strokeStyle = 'rgba(200,150,10,' + (alpha * 0.35) + ')';
+      ctx.lineWidth = 0.8;
+      ctx.stroke();
+    }
+  }
+
+  // ── Draw city dot ────────────────────────────────────────────────────
+  function drawCity(city, R, cx, cy, t) {
+    var p3 = latLngTo3D(city.lat, city.lng);
+    var r3 = rotate3D(p3, rotY, rotX);
+    if (r3.z < 0) return null; // behind globe
+
+    var pr = project(r3, R, cx, cy);
+    var visible = r3.z;
+
+    if (city.r > 0) {
+      // City dot
+      var dotR = city.r * pr.sc;
+      if (city.glow) {
+        // Accra - pulsing gold glow
+        var pulse = 0.6 + 0.4 * Math.sin(t * 0.04);
+        var grad = ctx.createRadialGradient(pr.sx, pr.sy, 0, pr.sx, pr.sy, dotR * 5 * pulse);
+        grad.addColorStop(0, 'rgba(240,180,41,0.6)');
+        grad.addColorStop(0.3, 'rgba(200,150,10,0.2)');
+        grad.addColorStop(1, 'rgba(200,150,10,0)');
+        ctx.beginPath();
+        ctx.arc(pr.sx, pr.sy, dotR * 5 * pulse, 0, Math.PI * 2);
+        ctx.fillStyle = grad;
+        ctx.fill();
+        // Ring
+        ctx.beginPath();
+        ctx.arc(pr.sx, pr.sy, dotR * 3 * pulse, 0, Math.PI * 2);
+        ctx.strokeStyle = 'rgba(240,180,41,' + (0.3 * pulse) + ')';
+        ctx.lineWidth = 1;
+        ctx.stroke();
+      }
+      // Main dot
+      ctx.beginPath();
+      ctx.arc(pr.sx, pr.sy, dotR, 0, Math.PI * 2);
+      ctx.fillStyle = city.glow ? GOLD2 : 'rgba(200,150,10,' + (0.4 + visible * 0.6) + ')';
+      ctx.fill();
+
+      // Label
+      ctx.font = (city.glow ? 'bold ' : '') + Math.round(9.5 * pr.sc) + 'px DM Mono, monospace';
+      ctx.fillStyle = 'rgba(245,240,230,' + (0.25 + visible * 0.65) + ')';
+      ctx.fillText(city.label, pr.sx + dotR + 4, pr.sy + 3 * pr.sc);
+    }
+
+    return { sx: pr.sx, sy: pr.sy, visible: visible, r3: r3 };
+  }
+
+  // ── Draw floating system tags ────────────────────────────────────────
+  function drawTag(city, R, cx, cy, t) {
+    // Tags orbit at a larger radius
+    var orbitR = R * 1.42;
+    var speed  = city.speed || 0.5;
+    // Use lat/lng as base position but orbit on a sphere shell
+    var baseY   = rotY + t * autoSpeed * speed * 0.6;
+    var phi   = (90 - city.lat) * Math.PI / 180;
+    var theta = (city.lng + 180) * Math.PI / 180 + baseY * speed;
+
+    var x3 = -Math.sin(phi) * Math.cos(theta);
+    var y3 =  Math.cos(phi);
+    var z3 =  Math.sin(phi) * Math.sin(theta);
+
+    var r3 = rotate3D({x:x3,y:y3,z:z3}, 0, rotX);
+    if (r3.z < -0.3) return; // behind
+
+    var pr = project(r3, orbitR, cx, cy);
+    var alpha = Math.max(0, (r3.z + 0.3) / 1.3);
+
+    // Tag pill
+    ctx.font = 'bold 10px DM Mono, monospace';
+    var tw = ctx.measureText(city.label).width;
+    var tw2 = tw + 16, th2 = 22;
+    var tx = pr.sx - tw2/2, ty = pr.sy - th2/2;
+
+    ctx.beginPath();
+    ctx.roundRect ? ctx.roundRect(tx, ty, tw2, th2, 5) : ctx.rect(tx, ty, tw2, th2);
+    ctx.fillStyle = city.tagCol.replace('0.12', (0.12 * alpha).toFixed(3));
+    ctx.fill();
+    ctx.strokeStyle = 'rgba(200,150,10,' + (0.28 * alpha) + ')';
+    ctx.lineWidth = 0.8;
+    ctx.stroke();
+
+    ctx.fillStyle = 'rgba(255,212,107,' + alpha + ')';
+    ctx.fillText(city.label, pr.sx - tw/2, pr.sy + 3.5);
+  }
+
+  // ── Animated arc progress ─────────────────────────────────────────────
+  var arcProgress = [];
+  ARCS.forEach(function(_, i) { arcProgress.push((i / ARCS.length)); });
+
+  // ── Main render loop ─────────────────────────────────────────────────
+  var frame = 0;
+  function draw() {
+    frame++;
+    if (!dragging) rotY += autoSpeed;
+
+    var W  = canvas.width;
+    var H  = canvas.height;
+    var cx = W / 2;
+    var cy = H / 2;
+    var R  = Math.min(W, H) * 0.38;
+
+    ctx.clearRect(0, 0, W, H);
+
+    // Outer glow
+    var grad = ctx.createRadialGradient(cx, cy, R * 0.6, cx, cy, R * 1.4);
+    grad.addColorStop(0, 'rgba(200,150,10,0.03)');
+    grad.addColorStop(1, 'rgba(0,0,0,0)');
+    ctx.beginPath();
+    ctx.arc(cx, cy, R * 1.4, 0, Math.PI * 2);
+    ctx.fillStyle = grad;
+    ctx.fill();
+
+    // Globe sphere fill
+    var sphereGrad = ctx.createRadialGradient(cx - R*0.2, cy - R*0.2, R*0.05, cx, cy, R);
+    sphereGrad.addColorStop(0, 'rgba(20,15,0,0.9)');
+    sphereGrad.addColorStop(0.6, 'rgba(10,8,0,0.95)');
+    sphereGrad.addColorStop(1, 'rgba(0,0,0,0.98)');
+    ctx.beginPath();
+    ctx.arc(cx, cy, R, 0, Math.PI * 2);
+    ctx.fillStyle = sphereGrad;
+    ctx.fill();
+
+    // Globe border
+    ctx.beginPath();
+    ctx.arc(cx, cy, R, 0, Math.PI * 2);
+    ctx.strokeStyle = 'rgba(200,150,10,0.18)';
+    ctx.lineWidth = 1.2;
+    ctx.stroke();
+
+    // Grid lines
+    drawGrid(cx, cy, R);
+
+    // Arcs
+    ARCS.forEach(function(arc, i) {
+      arcProgress[i] = (arcProgress[i] + 0.003) % 1;
+      drawArc(CITIES[arc[0]], CITIES[arc[1]], R, cx, cy, 1);
+    });
+
+    // City dots (back pass - dim)
+    CITIES.forEach(function(city) {
+      if (city.tag) return;
+      var p3 = latLngTo3D(city.lat, city.lng);
+      var r3 = rotate3D(p3, rotY, rotX);
+      if (r3.z >= 0) return; // skip front-facing
+      if (r3.z > -0.3) {
+        var pr2 = project(r3, R, cx, cy);
+        ctx.beginPath();
+        ctx.arc(pr2.sx, pr2.sy, city.r * 0.5, 0, Math.PI * 2);
+        ctx.fillStyle = 'rgba(200,150,10,0.08)';
+        ctx.fill();
+      }
+    });
+
+    // City dots (front pass)
+    CITIES.forEach(function(city) {
+      if (!city.tag) drawCity(city, R, cx, cy, frame);
+    });
+
+    // System tags orbiting
+    CITIES.forEach(function(city) {
+      if (city.tag) drawTag(city, R, cx, cy, frame);
+    });
+
+    // Highlight sphere edge
+    var edgeGrad = ctx.createRadialGradient(cx - R*0.5, cy - R*0.4, R*0.6, cx, cy, R*1.02);
+    edgeGrad.addColorStop(0, 'rgba(200,150,10,0)');
+    edgeGrad.addColorStop(0.85, 'rgba(200,150,10,0)');
+    edgeGrad.addColorStop(1, 'rgba(200,150,10,0.08)');
+    ctx.beginPath();
+    ctx.arc(cx, cy, R, 0, Math.PI * 2);
+    ctx.strokeStyle = edgeGrad;
+    ctx.lineWidth = 8;
+    ctx.stroke();
+
+    // Specular highlight
+    var specGrad = ctx.createRadialGradient(cx - R*0.35, cy - R*0.35, 0, cx - R*0.35, cy - R*0.35, R*0.5);
+    specGrad.addColorStop(0, 'rgba(255,220,120,0.07)');
+    specGrad.addColorStop(1, 'rgba(255,220,120,0)');
+    ctx.beginPath();
+    ctx.arc(cx, cy, R, 0, Math.PI * 2);
+    ctx.fillStyle = specGrad;
+    ctx.fill();
+
+    requestAnimationFrame(draw);
+  }
+
+  // ── Mouse / touch interaction ─────────────────────────────────────────
+  canvas.addEventListener('mousedown', function(e) {
+    dragging = true; lastX = e.clientX; lastY = e.clientY; velX = 0;
+  });
+  window.addEventListener('mousemove', function(e) {
+    if (!dragging) return;
+    var dx = e.clientX - lastX;
+    var dy = e.clientY - lastY;
+    rotY += dx * 0.005;
+    rotX += dy * 0.005;
+    rotX = Math.max(-0.6, Math.min(0.6, rotX));
+    velX = dx * 0.005;
+    lastX = e.clientX; lastY = e.clientY;
+  });
+  window.addEventListener('mouseup', function() {
+    dragging = false;
+    autoSpeed = Math.abs(velX) > 0.001 ? (velX > 0 ? 0.003 : -0.003) : 0.003;
+  });
+  canvas.addEventListener('touchstart', function(e) {
+    dragging = true; lastX = e.touches[0].clientX; lastY = e.touches[0].clientY;
+  }, { passive: true });
+  canvas.addEventListener('touchmove', function(e) {
+    if (!dragging) return;
+    var dx = e.touches[0].clientX - lastX;
+    var dy = e.touches[0].clientY - lastY;
+    rotY += dx * 0.005;
+    rotX += dy * 0.005;
+    rotX = Math.max(-0.6, Math.min(0.6, rotX));
+    lastX = e.touches[0].clientX; lastY = e.touches[0].clientY;
+  }, { passive: true });
+  canvas.addEventListener('touchend', function() { dragging = false; });
+
+  // ── Start ────────────────────────────────────────────────────────────
+  draw();
+
+})();
+
 </script>
 </body>
 </html>

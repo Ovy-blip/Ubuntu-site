@@ -2,19 +2,19 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8"/>
-<title>For Investors — UBL · Ubuntu Banking Layer</title>
+<title>Home — UBL · Ubuntu Banking Layer</title>
 <meta name="viewport" content="width=device-width,initial-scale=1"/>
-<meta name="description" content="UBL investor overview — $680B TAM, $92M Year 5 revenue, Bank of Ghana aligned."/>
+<meta name="description" content="UBL — Ubuntu Banking Layer. Behavioural banking intelligence for Africa's 600M unbanked."/>
 <meta property="og:type" content="website"/>
-<meta property="og:url" content="https://www.ublafrica.com/for-investors.html"/>
-<meta property="og:title" content="For Investors — Ubuntu Banking Layer"/>
-<meta property="og:description" content="UBL investor overview — $680B TAM, $92M Year 5 revenue, Bank of Ghana aligned."/>
+<meta property="og:url" content="https://www.ublafrica.com/index.html"/>
+<meta property="og:title" content="Home — Ubuntu Banking Layer"/>
+<meta property="og:description" content="UBL — Ubuntu Banking Layer. Behavioural banking intelligence for Africa's 600M unbanked."/>
 <meta name="twitter:card" content="summary_large_image"/>
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='32' fill='%23000'/%3E%3Ccircle cx='32' cy='32' r='30' fill='none' stroke='%23C8960A' stroke-width='1.5'/%3E%3Ctext x='32' y='44' font-family='Georgia' font-size='30' font-weight='700' fill='%23F0B429' text-anchor='middle'%3EU%3C/text%3E%3C/svg%3E"/>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Jost:wght@300;400;500;600;700&family=DM+Mono:wght@400;500&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 <style>
 :root{
   --black:#000000;--bg:#050401;--bg2:#0A0800;
@@ -272,13 +272,13 @@ a.fci:hover{color:var(--gold2);}
       <div><span class="logo-name">Ubuntu Banking Layer</span><span class="logo-tag">I am because we are</span></div>
     </a>
     <nav class="nav-links">
-      <a href="index.html" class="nav-link">Home</a>
+      <a href="index.html" class="nav-link active">Home</a>
       <a href="about.html" class="nav-link">About UBL</a>
       <a href="how-it-works.html" class="nav-link">How It Works</a>
       <a href="trust-score.html" class="nav-link">Trust Score</a>
       <a href="for-banks.html" class="nav-link">For Banks</a>
       <a href="for-government.html" class="nav-link">For Government</a>
-      <a href="for-investors.html" class="nav-link active">For Investors</a>
+      <a href="for-investors.html" class="nav-link">For Investors</a>
       <a href="contact.html" class="nav-link">Contact</a>
       
     </nav>
@@ -303,71 +303,201 @@ a.fci:hover{color:var(--gold2);}
   </div>
 </div>
 <main>
-<div class="hero fade-up d1" style="min-height:55vh;">
-  <div class="hero-badge"><span class="badge-dot"></span>For Investors</div>
-  <h1 class="hero-title">The infrastructure play<br/>Africa has been <em>waiting for</em>.</h1>
-  <p class="hero-desc">$680 billion total addressable market. 600 million people waiting to be bankable. A compounding network effect no competitor can replicate. And a window that is open right now.</p>
+<div class="hero fade-up d1">
+  <div class="hero-badge"><span class="badge-dot"></span>Live in Ghana · ECOWAS Ready · Bank of Ghana Aligned</div>
+  <h1 class="hero-title">Banking trust for<br/><em>600 million</em><br/>invisible people.</h1>
+  <p class="hero-desc">UBL is the behavioural intelligence and identity infrastructure that sits between Africa's informal economy and the formal financial system — making the invisible permanently visible, scorable and bankable.</p>
+  <div class="hero-btns">
+    <button class="btn-gold" onclick="openWhatsApp()">Request API Access</button>
+    <a href="how-it-works.html" class="btn-ghost">How It Works →</a>
+  </div>
 </div>
 
 <div class="stats-bar">
-  <div class="stat-item fade-up d1"><div class="stat-num">$680B</div><div class="stat-lbl">Total African market<br/>TAM</div></div>
-  <div class="stat-item fade-up d2"><div class="stat-num">$48B</div><div class="stat-lbl">West Africa<br/>SAM</div></div>
-  <div class="stat-item fade-up d3"><div class="stat-num">$1.2B</div><div class="stat-lbl">Ghana 5-year<br/>SOM</div></div>
-  <div class="stat-item fade-up d4"><div class="stat-num">$92M</div><div class="stat-lbl">Year 5<br/>Revenue</div></div>
-  <div class="stat-item fade-up d5"><div class="stat-num">$2.8M</div><div class="stat-lbl">Seed round<br/>Target</div></div>
+  <div class="stat-item fade-up d1"><div class="stat-num">600M+</div><div class="stat-lbl">Adults financially<br/>excluded in Africa</div></div>
+  <div class="stat-item fade-up d2"><div class="stat-num">$3T</div><div class="stat-lbl">Informal economy<br/>invisible to banks</div></div>
+  <div class="stat-item fade-up d3"><div class="stat-num">15%</div><div class="stat-lbl">Credit bureau<br/>coverage in Africa</div></div>
+  <div class="stat-item fade-up d4"><div class="stat-num">54</div><div class="stat-lbl">African countries —<br/>one trust layer</div></div>
+  <div class="stat-item fade-up d5"><div class="stat-num">&lt;2s</div><div class="stat-lbl">KYC + Score + AML<br/>in one API call</div></div>
+  <div class="stat-item fade-up d6"><div class="stat-num">99.9%</div><div class="stat-lbl">Uptime SLA<br/>Bank-grade</div></div>
 </div>
 
 <div class="section">
-  <span class="eyebrow">Business Model</span>
-  <h2 class="sh">Four Revenue Streams —<br/><em>Compounding</em></h2>
-  <div class="g2" style="margin-top:2rem;">
-    <div class="card fade-up d1"><div class="card-num" style="font-size:2.5rem;">01</div><div class="card-h">API Subscription</div><div class="card-p" style="margin-top:0.5rem;">$8–40/month per bank seat. Tiered by query volume. Predictable SaaS recurring revenue. Banks pay per API call above monthly threshold. Scales automatically with their usage growth.</div></div>
-    <div class="card fade-up d2"><div class="card-num" style="font-size:2.5rem;">02</div><div class="card-h">Transaction Revenue</div><div class="card-p" style="margin-top:0.5rem;">$0.08–0.35 per KYC verification. 0.5–2% of loan origination value. Real-time scoring at $0.02 per call. Every transaction on the network generates incremental revenue at near-zero marginal cost.</div></div>
-    <div class="card fade-up d3"><div class="card-num" style="font-size:2.5rem;">03</div><div class="card-h">Data Intelligence</div><div class="card-p" style="margin-top:0.5rem;">Anonymised market intelligence sold to government, DFIs and central banks. Sector flow reports, credit trend data, MSME studies. $25K–200K per annual contract. High margin, low effort.</div></div>
-    <div class="card fade-up d4"><div class="card-num" style="font-size:2.5rem;">04</div><div class="card-h">White-Label Platform</div><div class="card-p" style="margin-top:0.5rem;">Full platform licensing to central banks, telcos and DFIs in other countries. $500K–$2M annual licence. Each new country is a new compounding revenue node in the continental network.</div></div>
+  <span class="eyebrow">What UBL Is</span>
+  <h2 class="sh">Not a bank. Not an app.<br/>The <em>trust layer</em> underneath both.</h2>
+  <p class="sp">UBL captures real behavioural data — mobile money flows, savings patterns, merchant payments, cooperative activity — and converts it into a real-time Trust Score that any bank, MFI or fintech can query in under two seconds. No replacement of existing systems. No disruption. Pure intelligence.</p>
+  <div class="g3">
+    <div class="card fade-up d1"><div class="card-num">01</div><div class="card-h">Trust Score Engine</div><div class="card-p">Behavioural scoring from real life data — not what people say, what they do. Six signal inputs. Updated in real time. Explainable, auditable, portable.</div></div>
+    <div class="card fade-up d2"><div class="card-num">02</div><div class="card-h">Financial Inclusion API</div><div class="card-p">One REST API. Any bank, MFI or fintech connects and immediately accesses trust scores, identity verification, AML screening and risk models. ISO 20022 aligned.</div></div>
+    <div class="card fade-up d3"><div class="card-num">03</div><div class="card-h">Regulatory Intelligence</div><div class="card-p">Real-time FIC/AML dashboard. Every UBL transaction is auditable, flaggable and reportable. Compliance automated — not bolted on, built in.</div></div>
+  </div>
+</div>
+
+<div class="map-section">
+  <div>
+    <svg viewBox="0 0 500 600" xmlns="http://www.w3.org/2000/svg" class="africa-map" aria-label="Africa map showing UBL deployment">
+  <defs>
+    <radialGradient id="gGhana" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" style="stop-color:#F0B429;stop-opacity:0.95"/>
+      <stop offset="100%" style="stop-color:#C8960A;stop-opacity:0.5"/>
+    </radialGradient>
+    <filter id="glow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="4" result="coloredBlur"/>
+      <feMerge><feMergeNode in="coloredBlur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="softglow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="2" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+
+  <!-- Africa continent -->
+  <path class="continent" d="M200,22 L235,18 L268,26 L295,40 L318,52 L342,60 L365,65 L382,76 L392,94 L395,114 L390,135 L384,155 L380,170 L390,188 L400,208 L403,228 L400,248 L390,268 L376,288 L360,308 L342,330 L326,352 L314,374 L302,396 L288,420 L272,444 L254,466 L236,484 L218,498 L204,508 L196,500 L186,482 L178,462 L170,440 L164,418 L156,396 L148,372 L142,350 L136,328 L132,306 L128,284 L124,262 L120,240 L118,218 L116,196 L116,174 L118,152 L122,130 L128,110 L138,92 L152,76 L168,62 L182,48 L192,34 Z"/>
+
+  <!-- ECOWAS region highlight -->
+  <path class="region-ecowas" d="M118,218 L145,210 L168,205 L192,202 L215,206 L232,215 L240,230 L238,248 L225,262 L205,268 L183,265 L162,260 L142,252 L128,240 L118,226 Z" opacity="0.4"/>
+
+  <!-- Individual countries -->
+  <!-- Ghana - PRIMARY DEPLOYMENT -->
+  <path class="country country-ghana" filter="url(#glow)" d="M176,272 L194,265 L210,263 L224,268 L230,280 L226,296 L216,308 L202,313 L186,308 L174,296 L170,282 Z"/>
+  <!-- Nigeria -->
+  <path class="country country-nigeria" d="M218,256 L242,248 L260,250 L274,260 L278,274 L270,288 L252,294 L232,290 L218,278 L213,265 Z"/>
+  <!-- Côte d'Ivoire -->
+  <path class="country country-ecowas" d="M148,276 L168,270 L180,276 L176,292 L160,298 L146,290 Z"/>
+  <!-- Senegal -->
+  <path class="country country-ecowas" d="M118,215 L138,210 L150,216 L146,228 L130,232 L116,224 Z"/>
+  <!-- Mali -->
+  <path class="country country-ecowas" d="M140,190 L168,184 L195,182 L205,192 L198,208 L170,212 L144,206 Z"/>
+  <!-- Togo/Benin -->
+  <path class="country country-ecowas" d="M212,266 L220,262 L226,268 L224,280 L216,282 L210,276 Z"/>
+  <!-- Kenya -->
+  <path class="country country-east" d="M322,298 L342,292 L354,302 L348,318 L332,324 L318,314 Z"/>
+  <!-- Tanzania -->
+  <path class="country country-east" d="M306,318 L328,312 L340,322 L334,340 L314,346 L300,334 Z"/>
+  <!-- South Africa -->
+  <path class="country country-south" d="M190,458 L220,450 L244,454 L252,470 L240,484 L214,488 L192,478 L182,465 Z"/>
+  <!-- Egypt -->
+  <path class="country country-north" d="M232,58 L262,54 L280,64 L276,84 L254,90 L228,84 L222,70 Z"/>
+  <!-- Ethiopia -->
+  <path class="country country-east" d="M326,258 L352,252 L366,262 L360,280 L340,286 L322,276 Z"/>
+  <!-- Angola -->
+  <path class="country country-south" d="M210,358 L238,350 L254,358 L250,378 L226,384 L206,374 Z"/>
+
+  <!-- Connection lines from Ghana -->
+  <line class="conn-line" x1="200" y1="288" x2="245" y2="270"/>
+  <line class="conn-line" x1="190" y1="280" x2="135" y2="222"/>
+  <line class="conn-line" x1="192" y1="282" x2="162" y2="284"/>
+  <line class="conn-line" x1="200" y1="288" x2="174" y2="290"/>
+  <line class="conn-line" x1="200" y1="290" x2="338" y2="308" stroke-dasharray="6 6"/>
+  <line class="conn-line" x1="196" y1="295" x2="218" y2="466" stroke-dasharray="8 8" opacity="0.3"/>
+  <line class="conn-line" x1="200" y1="270" x2="248" y2="72" stroke-dasharray="6 8" opacity="0.25"/>
+  <line class="conn-line" x1="200" y1="288" x2="340" y2="268" stroke-dasharray="5 7" opacity="0.2"/>
+
+  <!-- Ghana beacon -->
+  <circle cx="196" cy="288" r="18" fill="var(--gold2)" opacity="0.08">
+    <animate attributeName="r" values="14;28;14" dur="3s" repeatCount="indefinite"/>
+    <animate attributeName="opacity" values="0.12;0.02;0.12" dur="3s" repeatCount="indefinite"/>
+  </circle>
+  <circle cx="196" cy="288" r="10" fill="var(--gold2)" opacity="0.15">
+    <animate attributeName="r" values="8;16;8" dur="3s" begin="0.5s" repeatCount="indefinite"/>
+    <animate attributeName="opacity" values="0.2;0.05;0.2" dur="3s" begin="0.5s" repeatCount="indefinite"/>
+  </circle>
+
+  <!-- City dots -->
+  <circle class="city-dot city-ghana" cx="196" cy="288" r="6" filter="url(#glow)"/>
+  <circle class="city-dot city-nigeria" cx="245" cy="270" r="4"/>
+  <circle class="city-dot city-east" cx="336" cy="310" r="4"/>
+  <circle class="city-dot city-south" cx="218" cy="468" r="4"/>
+  <circle class="city-dot city-north" cx="250" cy="72" r="4"/>
+  <circle class="city-dot" cx="135" cy="222" r="3" fill="rgba(200,150,10,0.6)"/>
+  <circle class="city-dot" cx="162" cy="284" r="3" fill="rgba(200,150,10,0.6)"/>
+  <circle class="city-dot" cx="340" cy="268" r="3.5" fill="rgba(200,150,10,0.5)"/>
+
+  <!-- Labels -->
+  <text class="city-label label-ghana" x="204" y="284">Accra ✦</text>
+  <text class="city-label" x="250" y="258" style="fill:rgba(255,255,255,0.45);font-size:9px;">Lagos</text>
+  <text class="city-label" x="340" y="300" style="fill:rgba(255,255,255,0.35);font-size:8px;">Nairobi</text>
+  <text class="city-label" x="185" y="445" style="fill:rgba(255,255,255,0.3);font-size:8px;">Cape Town</text>
+  <text class="city-label" x="350" y="258" style="fill:rgba(255,255,255,0.35);font-size:8px;">Addis Ababa</text>
+
+  <!-- Region labels -->
+  <text class="region-label" x="172" y="348">ECOWAS</text>
+  <text class="region-label" x="318" y="265" style="font-size:7.5px;opacity:0.5">East Africa</text>
+  <text class="region-label" x="200" y="440" style="font-size:7.5px;opacity:0.4">Southern Africa</text>
+</svg>
+    <div id="map-tip" style="display:none;font-family:var(--font-mono);font-size:0.7rem;color:var(--gold2);padding:0.4rem 0.8rem;background:rgba(200,150,10,0.08);border:1px solid var(--border);border-radius:6px;margin-top:1rem;"></div>
+    <div class="map-legend" style="margin-top:1.5rem;">
+      <div class="legend-item"><div class="legend-dot" style="background:var(--gold2);box-shadow:0 0 8px rgba(200,150,10,0.5);"></div>Ghana — Live Deployment (Phase 1)</div>
+      <div class="legend-item"><div class="legend-dot" style="background:rgba(200,150,10,0.5);"></div>ECOWAS — Phase 2 (2026–2027)</div>
+      <div class="legend-item"><div class="legend-dot" style="background:rgba(200,150,10,0.3);"></div>East & Southern Africa — Phase 3–4</div>
+    </div>
+  </div>
+  <div class="fade-up">
+    <span class="eyebrow">Continental Expansion</span>
+    <h2 class="sh">Ghana First.<br/><em>Africa Next.</em></h2>
+    <p class="sp">UBL is designed from day one to work across Africa's 54 countries. Ghana is the production deployment. ECOWAS expansion follows in 2026–2027. Every new country added is a new node in a continental trust network.</p>
+    <div class="g2" style="margin-top:2rem;gap:1rem;">
+      <div class="scard"><div class="scard-val">15</div><div class="scard-lbl">ECOWAS member states — Phase 2 target</div></div>
+      <div class="scard"><div class="scard-val">54</div><div class="scard-lbl">African countries — continental architecture</div></div>
+      <div class="scard"><div class="scard-val">$680B</div><div class="scard-lbl">Total addressable market</div></div>
+      <div class="scard"><div class="scard-val">2027</div><div class="scard-lbl">ECOWAS Trust ID launch target</div></div>
+    </div>
   </div>
 </div>
 
 <div class="section">
-  <span class="eyebrow">Financial Projections</span>
-  <h2 class="sh">5-Year Revenue <em>Trajectory</em></h2>
-  <div style="overflow-x:auto;margin-top:2rem;">
-    <table class="premium-table">
-      <thead>
-        <tr>
-          <th>Year</th><th>Bank Partners</th><th>UBL Users</th>
-          <th>Revenue</th><th>ARR</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr><td>Year 1</td><td>8</td><td>50K</td><td class="td-green">$1.2M</td><td class="td-green">$3.2M</td></tr>
-        <tr><td>Year 2</td><td>22</td><td>280K</td><td class="td-green">$4.8M</td><td class="td-green">$11M</td></tr>
-        <tr><td>Year 3</td><td>45</td><td>820K</td><td class="td-green">$14M</td><td class="td-green">$28M</td></tr>
-        <tr><td>Year 4</td><td>80</td><td>2.1M</td><td class="td-green">$38M</td><td class="td-green">$62M</td></tr>
-        <tr class="last-row"><td>Year 5</td><td>140</td><td>5M+</td><td>$92M</td><td>$130M</td></tr>
-      </tbody>
-    </table>
+  <span class="eyebrow">Who UBL Serves</span>
+  <h2 class="sh">Built for every actor in the<br/><em>financial system</em></h2>
+  <div class="g3" style="margin-top:1rem;">
+    <a href="for-banks.html" class="card fade-up d1" style="text-decoration:none;">
+      <div style="font-family:var(--font-mono);font-size:0.68rem;color:var(--gold);letter-spacing:0.1em;margin-bottom:1rem;text-transform:uppercase;">For Banks →</div>
+      <div class="card-h">6× more loan applications. KYC under $2. AML automated.</div>
+      <div class="card-p" style="margin-top:0.75rem;">Pre-qualified pipeline of 800K+ merchants ready for your products today. Zero risk model changes required.</div>
+    </a>
+    <a href="for-government.html" class="card fade-up d2" style="text-decoration:none;">
+      <div style="font-family:var(--font-mono);font-size:0.68rem;color:var(--gold);letter-spacing:0.1em;margin-bottom:1rem;text-transform:uppercase;">For Government →</div>
+      <div class="card-h">$480M+ GRA uplift. 100% AML coverage. Policy executed.</div>
+      <div class="card-p" style="margin-top:0.75rem;">Financial inclusion targets measured, reported and hit — not just promised. Real-time FIC dashboard from day one.</div>
+    </a>
+    <a href="for-investors.html" class="card fade-up d3" style="text-decoration:none;">
+      <div style="font-family:var(--font-mono);font-size:0.68rem;color:var(--gold);letter-spacing:0.1em;margin-bottom:1rem;text-transform:uppercase;">For Investors →</div>
+      <div class="card-h">$680B TAM. $92M Year 5 revenue. 4 compounding streams.</div>
+      <div class="card-p" style="margin-top:0.75rem;">Network effects no competitor can replicate. Bank of Ghana aligned. The window is open — right now.</div>
+    </a>
   </div>
-  <p style="font-family:var(--font-mono);font-size:0.72rem;color:var(--muted);margin-top:1rem;">Comparable deployments: M-PESA (Kenya), Jumo (Ghana), Chipper Cash (multi-country), First Access (Tanzania). Seed round: $2.8M.</p>
 </div>
 
-<div class="section">
-  <span class="eyebrow">Why Now</span>
-  <h2 class="sh">The Window Is Open —<br/><em>Right Now</em></h2>
-  <div style="margin-top:2rem;">
-    <div class="step fade-up d1"><div class="step-n">01</div><div><div class="step-h">Ghana Card national rollout complete</div><div class="step-p">For the first time in Ghana's history, there is a universal national identity anchor. UBL builds on top of this infrastructure — the timing is architecturally perfect.</div></div></div>
-    <div class="step fade-up d2"><div class="step-n">02</div><div><div class="step-h">Mobile money at critical mass</div><div class="step-p">65% of Ghanaians now use mobile money. The behavioural data exhaust from this network is the raw material for the Trust Score Engine. The infrastructure is already there.</div></div></div>
-    <div class="step fade-up d3"><div class="step-n">03</div><div><div class="step-h">BoG fintech sandbox is open</div><div class="step-p">The Bank of Ghana's fintech sandbox is actively seeking financial inclusion solutions. Regulatory risk is at its lowest point in Ghana's fintech history.</div></div></div>
-    <div class="step fade-up d4"><div class="step-n">04</div><div><div class="step-h">No incumbent in this exact space</div><div class="step-p">Credit bureaus don't score the informal sector. Banks can't reach it. Mobile money operators don't monetise the intelligence. The space is genuinely, completely unclaimed.</div></div></div>
-    <div class="step fade-up d5"><div class="step-n">05</div><div><div class="step-h">Continental momentum — AU Digital Single Market</div><div class="step-p">The African Union's digital financial inclusion roadmap is being implemented right now. UBL can become the continental standard if deployed in the next 24 months.</div></div></div>
+<div class="globe-section">
+  <span class="eyebrow">Systems Architecture</span>
+  <h2 class="sh" style="margin-bottom:0.5rem;">National systems<br/>orbiting <em>one trust core</em></h2>
+  <p class="sp">UBL is the financial trust layer in a suite of national digital infrastructure systems designed and operated by Agentics Technology Solutions. Each system reinforces the other.</p>
+  <div class="globe-wrap">
+    <canvas id="globe-canvas"></canvas>
+    <div class="orbit-labels" id="orbitLabels">
+      <span class="orbit-label ol-blue" data-angle="0" data-speed="0.3" data-radius="0.35">UBL</span>
+      <span class="orbit-label ol-green" data-angle="51" data-speed="0.28" data-radius="0.38">AYL</span>
+      <span class="orbit-label ol-amber" data-angle="102" data-speed="0.25" data-radius="0.33">NFEIS</span>
+      <span class="orbit-label ol-purple" data-angle="153" data-speed="0.32" data-radius="0.36">GIGGS</span>
+      <span class="orbit-label ol-teal" data-angle="204" data-speed="0.27" data-radius="0.34">LAND</span>
+      <span class="orbit-label ol-rose" data-angle="255" data-speed="0.3" data-radius="0.37">AKOMA-NIS</span>
+      <span class="orbit-label ol-blue" data-angle="306" data-speed="0.26" data-radius="0.32">NEIS-24</span>
+      <span class="orbit-label ol-amber" data-angle="25" data-speed="0.29" data-radius="0.4">FINANCE</span>
+      <span class="orbit-label ol-green" data-angle="76" data-speed="0.24" data-radius="0.35">SOCIAL</span>
+      <span class="orbit-label ol-rose" data-angle="127" data-speed="0.31" data-radius="0.33">BORDER</span>
+      <span class="orbit-label ol-purple" data-angle="178" data-speed="0.28" data-radius="0.38">AGRIC</span>
+      <span class="orbit-label ol-teal" data-angle="229" data-speed="0.26" data-radius="0.36">ENERGY</span>
+    </div>
+    <div class="globe-overlay">
+      <p style="font-family:var(--font-mono);font-size:0.7rem;color:rgba(200,150,10,0.6);letter-spacing:0.1em;">AGENTICS NATIONAL SYSTEMS SUITE</p>
+    </div>
   </div>
 </div>
 
 <div class="cta-band fade-up">
-  <h2 class="cta-h">Request the full <em>data room</em>.</h2>
-  <p class="cta-p">Financial model, technical architecture, regulatory pathway and team deck available for qualified investors.</p>
+  <h2 class="cta-h"><em>"I am because we are."</em></h2>
+  <p class="cta-p">Ubuntu Banking Layer — the trust infrastructure that makes 600 million people permanently bankable. Request your API sandbox access today.</p>
   <div class="cta-btns">
-    <button class="btn-gold" onclick="openWhatsApp()">Request Data Room</button>
+    <button class="btn-gold" onclick="openWhatsApp()">WhatsApp: +233 500 285 882</button>
     <a href="contact.html" class="btn-ghost">Contact Us →</a>
   </div>
 </div></main>
@@ -455,6 +585,10 @@ document.addEventListener('DOMContentLoaded',function(){
   });
 });
 </script>
-
+<script>
+(function(){var c=document.getElementById('globe-canvas'),s=new THREE.Scene(),cam=new THREE.PerspectiveCamera(45,c.clientWidth/c.clientHeight,.1,1e3);cam.position.z=3.2;var r=new THREE.WebGLRenderer({canvas:c,alpha:!0,antialias:!0});r.setSize(c.clientWidth,c.clientHeight);r.setPixelRatio(Math.min(window.devicePixelRatio,2));var g=new THREE.Mesh(new THREE.SphereGeometry(1,40,40),new THREE.MeshBasicMaterial({color:0x3b82f6,wireframe:!0,transparent:!0,opacity:.08}));s.add(g);s.add(new THREE.Mesh(new THREE.SphereGeometry(.98,32,32),new THREE.MeshBasicMaterial({color:0x1e3a5f,transparent:!0,opacity:.04})));var rc=[0x3b82f6,0x22c55e,0xa78bfa];for(var i=0;i<3;i++){var rg=new THREE.Mesh(new THREE.RingGeometry(1.02+i*.06,1.025+i*.06,80),new THREE.MeshBasicMaterial({color:rc[i],transparent:!0,opacity:.12,side:THREE.DoubleSide}));rg.rotation.x=Math.PI/2+(i-1)*.4;rg.rotation.y=i*.3;s.add(rg)}var dc=120,dg=new THREE.BufferGeometry(),pos=new Float32Array(dc*3);for(var i=0;i<dc;i++){var ph=Math.acos(2*Math.random()-1),th=2*Math.PI*Math.random();pos[i*3]=1.01*Math.sin(ph)*Math.cos(th);pos[i*3+1]=1.01*Math.sin(ph)*Math.sin(th);pos[i*3+2]=1.01*Math.cos(ph)}dg.setAttribute('position',new THREE.BufferAttribute(pos,3));s.add(new THREE.Points(dg,new THREE.PointsMaterial({color:0x60a5fa,size:.02,transparent:!0,opacity:.6})));for(var i=0;i<20;i++){var a=Math.floor(Math.random()*dc)*3,b=Math.floor(Math.random()*dc)*3;s.add(new THREE.Line(new THREE.BufferGeometry().setFromPoints([new THREE.Vector3(pos[a],pos[a+1],pos[a+2]),new THREE.Vector3(pos[b],pos[b+1],pos[b+2])]),new THREE.LineBasicMaterial({color:0x3b82f6,transparent:!0,opacity:.06})))}function anim(){requestAnimationFrame(anim);g.rotation.y+=.002;g.rotation.x+=.0005;s.children.forEach(function(ch,i){if(ch.geometry&&ch.geometry.type==='RingGeometry')ch.rotation.z+=.001*(i+1)});r.render(s,cam)}anim();window.addEventListener('resize',function(){cam.aspect=c.clientWidth/c.clientHeight;cam.updateProjectionMatrix();r.setSize(c.clientWidth,c.clientHeight)})})();
+(function(){var ct=document.getElementById('orbitLabels'),ls=ct.querySelectorAll('.orbit-label'),t=0;function a(){t+=.01;var cw=ct.clientWidth,ch=ct.clientHeight,cx=cw/2,cy=ch/2;ls.forEach(function(l){var ba=parseFloat(l.dataset.angle)*Math.PI/180,sp=parseFloat(l.dataset.speed),rf=parseFloat(l.dataset.radius),ang=ba+t*sp,rx=cw*rf,ry=ch*rf*.6,x=cx+Math.cos(ang)*rx-l.offsetWidth/2,y=cy+Math.sin(ang)*ry-l.offsetHeight/2,d=Math.sin(ang);l.style.left=x+'px';l.style.top=y+'px';l.style.opacity=.3+(d+1)*.35;l.style.zIndex=d>0?3:1;l.style.transform='scale('+(0.8+(d+1)*.15)+')'});requestAnimationFrame(a)}a()})();
+var obs=new IntersectionObserver(function(e){e.forEach(function(en){if(en.isIntersecting)en.target.classList.add('visible')})},{threshold:.1});document.querySelectorAll('.fade-up').forEach(function(el){obs.observe(el)});
+</script>
 </body>
 </html>
